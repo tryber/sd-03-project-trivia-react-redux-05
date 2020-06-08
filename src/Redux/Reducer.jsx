@@ -1,22 +1,18 @@
-const ADD_QUESTIONS = 'ADD_QUESTIONS'
+const ADD_QUESTIONS = 'ADD_QUESTIONS';
 
 const initialState = {
-    questions:[]
+  questions: [],
+};
+
+function reducer(state = initialState, action) {
+  switch (action.type) {
+    case ADD_QUESTIONS:
+      return { ...state, questions: [...action.payload] };
+
+    default:
+      return state;
+  }
 }
 
 
-
-function reducer(state = initialState, action){
-
-    switch (action.type) {
-        case ADD_QUESTIONS:
-            return {...state, questions:[...action.payload]}
-    
-        default:
-            break;
-    }
-
-}
-
-
-export default reducer
+export default reducer;
