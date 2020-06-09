@@ -12,7 +12,7 @@ export class TeladeInicio extends Component {
     };
   }
 
-  buttonValidate = () => {
+  buttonValidate() {
     const forms = document.getElementById('forms');
     if (forms.checkValidity()) {
       this.setState({ disabled: false });
