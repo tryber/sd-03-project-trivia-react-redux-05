@@ -19,17 +19,18 @@ export class TeladeInicio extends Component {
     } else {
       this.setState({ disabled: true });
     }
-  };
+  }
 
   handleSubmit(event) {
     const { playerInformation } = this.props;
     const { playerEmail, playerName } = this.state;
     this.setState({ [event.target.name]: event.target.value });
     playerInformation(playerEmail, playerName);
-  };
+  }
 
   nextPath(path) {
-    this.props.history.push(path);
+    const { history } = this.props;
+    history.push(path);
   }
 
   inputForms() {
@@ -69,7 +70,7 @@ export class TeladeInicio extends Component {
     return (
       <div>
         <button data-testid="btn-settings">Configurações</button>
-        <div data-testid="settings-title"></div>
+        <div data-testid="settings-title" />
       </div>
     );
   }
