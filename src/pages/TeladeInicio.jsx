@@ -67,10 +67,10 @@ export class TeladeInicio extends Component {
 
   config() {
     return (
-      <>
+      <div>
         <button data-testid="btn-settings">Configurações</button>
         <div data-testid="settings-title"></div>
-      </>
+      </div>
     );
   }
 
