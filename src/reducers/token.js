@@ -19,12 +19,12 @@ const token = (state = INITIAL_STATE, action) => {
         isFetching: false,
         token: action.token,
       };
-      case RECEIVE_API_TOKEN_ERROR:
-        return {
-          ...state,
-          isFetching: false,
-          error: action.error,
-        };
+    case RECEIVE_API_TOKEN_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
+      };
     default: return state;
   }
 };

@@ -19,12 +19,12 @@ const questions = (state = INITIAL_STATE, action) => {
         isFetching: false,
         questions: action.questions,
       };
-      case RECEIVE_API_QUESTIONS_ERROR:
-        return {
-          ...state,
-          isFetching: false,
-          error: action.error,
-        };
+    case RECEIVE_API_QUESTIONS_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
+      };
     default: return state;
   }
 };
