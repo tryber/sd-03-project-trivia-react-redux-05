@@ -1,0 +1,6 @@
+.answer{
+    border:thin solid rgb(0, 0, 0);
+    cursor:pointer;
+    padding:5px 10px;
+    width:fit-content;
+}
