@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../trivia.png';
@@ -29,8 +30,7 @@ export class TeladeInicio extends Component {
   }
 
   nextPath(path) {
-    const { history } = this.props;
-    history.push(path);
+    this.props.history.push(path);
   }
 
   inputForms() {
@@ -88,6 +88,13 @@ export class TeladeInicio extends Component {
     );
   }
 }
+
+TeladeInicio.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  playerInformation: PropTypes.func.isRequired,
+};
 
 const mapDispatchtoProps = (dispatch) => ({
   playerInformation: (playerEmail, playerName) =>
