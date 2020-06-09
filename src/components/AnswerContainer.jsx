@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Answer from './Answer';
 
 
@@ -33,7 +34,7 @@ class AnswerContainer extends React.Component {
 
   getAnswers() {
     const {
-      incorrectAnswers, correctAnswer,
+      incorrectAnswers, correctAnswer, difficulty,
     } = this.props;
     const wrongAnswer = incorrectAnswers.map((ans, index) => (
       <Answer
@@ -44,6 +45,7 @@ class AnswerContainer extends React.Component {
     ));
     const rightAnswer = (
       <Answer
+        difficulty={difficulty}
         type="correct"
         data-testid="correct-answer"
       >
@@ -56,9 +58,11 @@ class AnswerContainer extends React.Component {
 
   next() {
     const { nextQuestion, resetStyle, setTime } = this.props;
+    const history = useHistory();
     setTime(30);
     resetStyle();
     nextQuestion();
+    history.push('/feedback');
   }
 
   render() {
@@ -78,6 +82,7 @@ AnswerContainer.propTypes = {
   incorrectAnswers: PropTypes.arrayOf(PropTypes.string).isRequired,
   correctAnswer: PropTypes.string.isRequired,
   nextQuestion: PropTypes.func.isRequired,
+  difficulty: PropTypes.number.isRequired,
 };
 
 const dispatch = {

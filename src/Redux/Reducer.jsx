@@ -73,6 +73,7 @@ const initialState = {
   gamePage: {
     answerChoosed: false,
     timer: 30,
+    answersRight: 0,
 
   },
 };

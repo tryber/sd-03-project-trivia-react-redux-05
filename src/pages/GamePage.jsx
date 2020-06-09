@@ -6,6 +6,12 @@ import QuestionContainer from '../components/QuestionContainer';
 import AnswerContainer from '../components/AnswerContainer';
 import Timer from '../components/Timer';
 
+const difficultyArray = {
+  hard: 3,
+  medium: 2,
+  easy: 1,
+};
+
 class GamePage extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +31,8 @@ class GamePage extends Component {
     const { questionNumber } = this.state;
     const { questions } = this.props;
     const {
-      category, question, correct_answer: correctAnswer, incorrect_answers: incorrectAnswers,
+      category,
+      question, correct_answer: correctAnswer, incorrect_answers: incorrectAnswers, difficulty,
     } = questions[questionNumber];
     return (
       <div>
@@ -35,6 +42,7 @@ class GamePage extends Component {
           correctAnswer={correctAnswer}
           nextQuestion={this.nextQuestion}
           incorrectAnswers={incorrectAnswers}
+          difficulty={difficultyArray[difficulty]}
         />
         <Timer />
 

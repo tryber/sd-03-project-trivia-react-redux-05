@@ -3,6 +3,7 @@ import React from 'react';
 import '../style/Answer.css';
 import { connect } from 'react-redux';
 
+
 class Answer extends React.Component {
   constructor(props) {
     super(props);
@@ -31,11 +32,11 @@ class Answer extends React.Component {
 
   setPoints() {
     const {
-      chooseAnswer, type, timer, dificuldade = 3, addPoints,
+      chooseAnswer, type, timer, difficulty = 3, addPoints,
     } = this.props;
     chooseAnswer(true);
     if (type === 'correct') {
-      addPoints(10 + (timer * dificuldade));
+      addPoints(10 + (timer * difficulty));
     }
   }
 
