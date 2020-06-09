@@ -34,7 +34,7 @@ export class TeladeInicio extends Component {
 
   inputForms() {
     return (
-      <>
+      <div>
         <form id="forms" onChange={this.buttonValidate}>
           <label htmlFor="gravatar-email">Email do Gravatar: </label>
           <input
@@ -61,7 +61,7 @@ export class TeladeInicio extends Component {
             Jogar!
           </button>
         </form>
-      </>
+      </div>
     );
   }
 
@@ -76,14 +76,14 @@ export class TeladeInicio extends Component {
 
   render() {
     return (
-      <>
+      <div>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {this.inputForms()}
           <p>SUA VEZ</p>
           {this.config()}
         </header>
-      </>
+      </div>
     );
   }
 }
