@@ -21,7 +21,7 @@ export class TeladeInicio extends Component {
     }
   };
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     const { playerInformation } = this.props;
     const { playerEmail, playerName } = this.state;
     this.setState({ [event.target.name]: event.target.value });
