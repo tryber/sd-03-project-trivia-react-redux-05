@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import '../style/Answer.css';
 import { connect } from 'react-redux';
+import '../style/Answer.css';
 
 
 class Answer extends React.Component {
@@ -12,6 +12,7 @@ class Answer extends React.Component {
     };
     this.setPoints = this.setPoints.bind(this);
     this.setTheState = this.setTheState.bind(this);
+    this.renderWithType = this.renderWithType.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,16 +20,13 @@ class Answer extends React.Component {
 
     if (prevProps.answerChoosen !== answerChoosen) {
       if (answerChoosen) {
-        if (type === 'correct') {
-          this.setTheState({ style: { border: '3px solid rgb(6, 240, 15)' } });
-        } else {
-          this.setTheState({ style: { border: '3px solid rgb(255, 0, 0)' } });
-        }
+        this.renderWithType(type);
       } else {
         this.setTheState({ style: { } });
       }
     }
   }
+
 
   setTheState(prop) {
     this.setState(prop);
@@ -42,6 +40,14 @@ class Answer extends React.Component {
     chooseAnswer(true);
     if (type === 'correct') {
       addPoints(10 + (timer * difficulty));
+    }
+  }
+
+  renderWithType(type) {
+    if (type === 'correct') {
+      this.setTheState({ style: { border: '3px solid rgb(6, 240, 15)' } });
+    } else {
+      this.setTheState({ style: { border: '3px solid rgb(255, 0, 0)' } });
     }
   }
 

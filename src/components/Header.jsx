@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import '../style/Header.css';
 import { connect } from 'react-redux';
+import '../style/Header.css';
 
 function Header({ avatar, name, score = 0 }) {
   return (

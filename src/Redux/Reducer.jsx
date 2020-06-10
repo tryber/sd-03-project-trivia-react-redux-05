@@ -79,30 +79,34 @@ const initialState = {
   },
 };
 
+function renderAddPoints(state, action) {
+  let player = JSON.parse(localStorage.getItem('state'));
+  player = {
+    player:
+    {
+      ...player.player,
+      score: player.player.score + action.payload,
+      assertions: player.player.assertions + 1,
+    },
+  };
+  localStorage.setItem('state', JSON.stringify(player));
+  return {
+    ...state,
+    player: {
+      ...state.player,
+      score: state.player.score + action.payload,
+      assertions: state.player.assertions + 1,
+    },
+  };
+}
+
 function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_QUESTIONS:
       return { ...state, questions: [...action.payload] };
 
     case ADD_POINTS: {
-      let player = JSON.parse(localStorage.getItem('state'));
-      player = {
-        player:
-        {
-          ...player.player,
-          score: player.player.score + action.payload,
-          assertions: player.player.assertions + 1,
-        },
-      };
-      localStorage.setItem('state', JSON.stringify(player));
-      return {
-        ...state,
-        player: {
-          ...state.player,
-          score: state.player.score + action.payload,
-          assertions: state.player.assertions + 1,
-        },
-      };
+      return renderAddPoints(state, action);
     }
     case CHOOSE_ANSWER:
       return { ...state, gamePage: { ...state.gamePage, answerChoosed: action.payload } };

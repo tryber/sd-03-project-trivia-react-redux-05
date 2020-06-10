@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GamePage from './pages/GamePage';
 import Teladeinicio from './pages/TeladeInicio';
 import FeedBack from './pages/FeedBack';
+import './App.css';
 
 // <div className="App">
 //   <header className="App-header">
