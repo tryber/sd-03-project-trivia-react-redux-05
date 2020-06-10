@@ -53,14 +53,7 @@ export class TeladeInicio extends Component {
           <label htmlFor="gravatar-email">Email do Gravatar: </label>
           {this.renderGravatar()}
           <label htmlFor="player-name">Nome do Jogador: </label>
-          <input
-            type="text"
-            data-testid="input-player-name"
-            name="playerName"
-            value={this.state.playerName}
-            onChange={(e) => this.setState({ playerName: e.target.value })}
-            required
-          />
+          {this.renderName()}
           <button
             type="submit"
             disabled={!playerName || !playerEmail}
@@ -77,6 +70,19 @@ export class TeladeInicio extends Component {
           </button>
         </form>
       </div>
+    );
+  }
+
+  renderName() {
+    return (
+      <input
+        type="text"
+        data-testid="input-player-name"
+        name="playerName"
+        value={this.state.playerName}
+        onChange={(e) => this.setState({ playerName: e.target.value })}
+        required
+      />
     );
   }
 
