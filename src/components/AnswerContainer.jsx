@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import Answer from './Answer';
 
 
@@ -22,13 +21,19 @@ class AnswerContainer extends React.Component {
     };
     this.next = this.next.bind(this);
     this.getAnswers = this.getAnswers.bind(this);
+    this.setTheState = this.setTheState.bind(this);
   }
+
 
   componentDidUpdate(prevProps) {
     const { correctAnswer } = this.props;
     if (prevProps.correctAnswer !== correctAnswer) {
-      this.setState({ answers: this.getAnswers() });
+      this.setTheState({ answers: this.getAnswers() });
     }
+  }
+
+  setTheState(prop) {
+    this.setState(prop);
   }
 
 
@@ -81,6 +86,8 @@ AnswerContainer.propTypes = {
   correctAnswer: PropTypes.string.isRequired,
   nextQuestion: PropTypes.func.isRequired,
   difficulty: PropTypes.number.isRequired,
+  resetStyle: PropTypes.func.isRequired,
+  setTime: PropTypes.func.isRequired,
 };
 
 const dispatch = {

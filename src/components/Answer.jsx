@@ -11,6 +11,7 @@ class Answer extends React.Component {
       style: {},
     };
     this.setPoints = this.setPoints.bind(this);
+    this.setTheState = this.setTheState.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,14 +20,18 @@ class Answer extends React.Component {
     if (prevProps.answerChoosen !== answerChoosen) {
       if (answerChoosen) {
         if (type === 'correct') {
-          this.setState({ style: { border: '3px solid rgb(6, 240, 15)' } });
+          this.setTheState({ style: { border: '3px solid rgb(6, 240, 15)' } });
         } else {
-          this.setState({ style: { border: '3px solid rgb(255, 0, 0)' } });
+          this.setTheState({ style: { border: '3px solid rgb(255, 0, 0)' } });
         }
       } else {
-        this.setState({ style: { } });
+        this.setTheState({ style: { } });
       }
     }
+  }
+
+  setTheState(prop) {
+    this.setState(prop);
   }
 
 
@@ -66,6 +71,9 @@ Answer.propTypes = {
   children: PropTypes.string.isRequired,
   chooseAnswer: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
+  timer: PropTypes.number.isRequired,
+  difficulty: PropTypes.number.isRequired,
+  dataTestid: PropTypes.string.isRequired,
 };
 
 

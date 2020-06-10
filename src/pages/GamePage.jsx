@@ -58,6 +58,9 @@ class GamePage extends Component {
 
 GamePage.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.oneOf([PropTypes.string, PropTypes.array])).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 
