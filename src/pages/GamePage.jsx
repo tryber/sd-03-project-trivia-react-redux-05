@@ -23,7 +23,12 @@ class GamePage extends Component {
 
   nextQuestion() {
     const { questionNumber } = this.state;
-    this.setState({ questionNumber: questionNumber + 1 });
+    const { history } = this.props;
+    if (questionNumber < 4) {
+      this.setState({ questionNumber: questionNumber + 1 });
+    } else {
+      history.push('/feedback');
+    }
   }
 
 

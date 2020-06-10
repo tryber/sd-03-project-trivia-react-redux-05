@@ -10,7 +10,7 @@ function Header({ avatar, name, score = 0 }) {
         {`Jogador: ${name}`}
       </p>
       <p data-testid="header-score">
-        {`Pontos: ${score}`}
+        {`${score} Pontos`}
       </p>
 
     </div>
@@ -18,7 +18,7 @@ function Header({ avatar, name, score = 0 }) {
 }
 
 function mapProps(state) {
-  return { score: state.player.score };
+  return { score: state.player.score, name: state.player.name };
 }
 
 export default connect(mapProps)(Header);

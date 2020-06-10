@@ -25,7 +25,7 @@ class AnswerContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { correctAnswer, incorrectAnswers } = this.props;
+    const { correctAnswer } = this.props;
     if (prevProps.correctAnswer !== correctAnswer) {
       this.setState({ answers: this.getAnswers() });
     }
@@ -38,7 +38,7 @@ class AnswerContainer extends React.Component {
     } = this.props;
     const wrongAnswer = incorrectAnswers.map((ans, index) => (
       <Answer
-        data-testid={`wrong-answer-${index}`}
+        dataTestid={`wrong-answer-${index}`}
       >
         {ans}
       </Answer>
@@ -47,7 +47,7 @@ class AnswerContainer extends React.Component {
       <Answer
         difficulty={difficulty}
         type="correct"
-        data-testid="correct-answer"
+        dataTestid="correct-answer"
       >
         {correctAnswer}
       </Answer>
@@ -58,11 +58,9 @@ class AnswerContainer extends React.Component {
 
   next() {
     const { nextQuestion, resetStyle, setTime } = this.props;
-    const history = useHistory();
     setTime(30);
     resetStyle();
     nextQuestion();
-    history.push('/feedback');
   }
 
   render() {
@@ -71,7 +69,7 @@ class AnswerContainer extends React.Component {
     return (
       <div>
         {answers}
-        <button onClick={this.next} type="button">Proxima</button>
+        <button data-testid="btn-next" onClick={this.next} type="button">Proxima</button>
       </div>
 
     );

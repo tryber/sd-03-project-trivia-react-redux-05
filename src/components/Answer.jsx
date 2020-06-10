@@ -42,10 +42,20 @@ class Answer extends React.Component {
 
 
   render() {
-    const { children } = this.props;
+    const { children, dataTestid, timer } = this.props;
     const { style } = this.state;
     return (
-      <p style={style} onClick={() => this.setPoints()} className="answer">{children}</p>
+      <button
+        type="button"
+        disabled={timer <= 0}
+        data-testid={dataTestid}
+        style={style}
+        onClick={() => this.setPoints()}
+        className="answer"
+      >
+        {children}
+
+      </button>
     );
   }
 }

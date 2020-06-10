@@ -2,6 +2,7 @@ const ADD_QUESTIONS = 'ADD_QUESTIONS';
 const ADD_POINTS = 'ADD_POINTS';
 const CHOOSE_ANSWER = 'CHOOSE_ANSWER';
 const SET_TIMER = 'SET_TIMER';
+const PLAYER_INFORMATION = 'PLAYER_INFORMATION';
 
 const initialState = {
   questions: [
@@ -84,13 +85,37 @@ function reducer(state = initialState, action) {
       return { ...state, questions: [...action.payload] };
 
     case ADD_POINTS: {
-      return { ...state, player: { ...state.player, score: state.player.score + action.payload } };
+      let player = JSON.parse(localStorage.getItem('state'));
+      player = {
+        player:
+        {
+          ...player.player,
+          score: player.player.score + action.payload,
+          assertions: player.player.assertions + 1,
+        },
+      };
+      localStorage.setItem('state', JSON.stringify(player));
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          score: state.player.score + action.payload,
+          assertions: state.player.assertions + 1,
+        },
+      };
     }
     case CHOOSE_ANSWER:
       return { ...state, gamePage: { ...state.gamePage, answerChoosed: action.payload } };
 
     case SET_TIMER:
       return { ...state, gamePage: { ...state.gamePage, timer: action.payload } };
+
+    case PLAYER_INFORMATION:
+      return {
+        ...state,
+        player:
+        { ...state.player, name: action.playerName, gravatarEmail: action.playerEmail },
+      };
 
     default:
       return state;
