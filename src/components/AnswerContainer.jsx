@@ -70,11 +70,12 @@ class AnswerContainer extends React.Component {
 
   render() {
     const { answers } = this.state;
+    const { disable } = this.props;
 
     return (
       <div>
         {answers}
-        <button data-testid="btn-next" onClick={this.next} type="button">Proxima</button>
+        {disable && <button data-testid="btn-next" onClick={this.next} type="button">Proxima</button>}
       </div>
 
     );
@@ -88,6 +89,7 @@ AnswerContainer.propTypes = {
   difficulty: PropTypes.number.isRequired,
   resetStyle: PropTypes.func.isRequired,
   setTime: PropTypes.func.isRequired,
+  disable: PropTypes.bool.isRequired,
 };
 
 const dispatch = {
@@ -95,4 +97,10 @@ const dispatch = {
   setTime: (payload) => ({ type: 'SET_TIMER', payload }),
 };
 
-export default connect(null, dispatch)(AnswerContainer);
+function mapProps(state) {
+  return {
+    disable: state.gamePage.answerChoosed,
+  };
+}
+
+export default connect(mapProps, dispatch)(AnswerContainer);
