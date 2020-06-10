@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import '../style/Header.css';
 import { connect } from 'react-redux';
@@ -16,6 +17,12 @@ function Header({ avatar, name, score = 0 }) {
     </div>
   );
 }
+
+Header.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+};
 
 function mapProps(state) {
   return { score: state.player.score, name: state.player.name };

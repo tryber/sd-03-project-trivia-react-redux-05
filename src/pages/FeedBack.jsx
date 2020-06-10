@@ -31,6 +31,10 @@ function FeedBack({ answersRight, score, history }) {
 FeedBack.propTypes = {
   answersRight: PropTypes.number.isRequired,
   score: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+
 };
 
 function mapProp(state) {

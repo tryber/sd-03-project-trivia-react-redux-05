@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GamePage from './pages/GamePage';
 import Teladeinicio from './pages/TeladeInicio';
-import TeladoJogo from './pages/TeladoJogo';
 import FeedBack from './pages/FeedBack';
 
 // <div className="App">
