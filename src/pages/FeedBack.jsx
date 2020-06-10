@@ -54,6 +54,8 @@ FeedBack.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  picture: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 
 };
 
@@ -63,6 +65,7 @@ function mapProp(state) {
     score: state.player.score,
     picture: state.player.gravatarEmail,
     name: state.player.name,
+
 
   };
 }
