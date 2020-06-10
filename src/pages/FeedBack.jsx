@@ -1,9 +1,27 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import getGravatarImage from '../services/gravatarAPI';
 
-function FeedBack({ answersRight, score, history }) {
+
+function FeedBack({
+  answersRight, score, history, picture, name,
+}) {
+  useEffect(() => {
+    const ranking = JSON.parse(localStorage.getItem('ranking'));
+    let newRanking;
+    try {
+      newRanking = [...ranking, { name, score, picture: getGravatarImage(picture) }];
+    } catch (e) {
+      newRanking = [{ name, score, picture }];
+    }
+
+    localStorage.setItem('ranking', JSON.stringify(newRanking));
+  }, []);
+
+
   return (
     <div>
       <Header />
@@ -22,7 +40,9 @@ function FeedBack({ answersRight, score, history }) {
 
         pontos
       </p>
-      <button data-testid="btn-ranking" type="button">Ver Ranking</button>
+      <Link to="/ranking">
+        <button data-testid="btn-ranking" type="button">Ver Ranking</button>
+      </Link>
       <button onClick={() => history.push('/')} data-testid="btn-play-again" type="button">Jogar Novamente</button>
     </div>
   );
@@ -41,6 +61,9 @@ function mapProp(state) {
   return {
     answersRight: state.player.assertions,
     score: state.player.score,
+    picture: state.player.gravatarEmail,
+    name: state.player.name,
+
   };
 }
 
