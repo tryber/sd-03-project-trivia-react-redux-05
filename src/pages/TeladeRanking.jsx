@@ -1,26 +1,10 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 
-const ranking = [
-  {
-    name: 'Marco Barbosa',
-    score: 10,
-    picture: 'https://www.gravatar.com/avatar/d73ba0d37c5e78648383a8084a7fc6e8',
-  },
-  {
-    name: 'Mateus Moreira',
-    score: 35,
-    picture: 'https://www.gravatar.com/avatar/2d3bf5b67282f5f466e503d7022abcf3',
-  },
-  {
-    name: 'Gabriel Lucas',
-    score: 92,
-    picture: 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-  },
-];
+const localStorageRanking = JSON.parse(localStorage.getItem('ranking'));
 
 // thanks
-  // https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+// https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
 const dynamicSort = (objKey) => {
   let sortOrder = 1;
   let property = objKey;
@@ -61,7 +45,7 @@ class TeladeRanking extends React.Component {
 
   render() {
     const { goHome } = this.state;
-    const sortedRanking = ranking.sort(dynamicSort('score'));
+    const sortedRanking = localStorageRanking.sort(dynamicSort('score'));
     return (
       <div>
         {goHome && <Redirect to="/" />}
@@ -86,3 +70,4 @@ class TeladeRanking extends React.Component {
 }
 
 export default TeladeRanking;
+
