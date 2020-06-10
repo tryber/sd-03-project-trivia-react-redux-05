@@ -75,7 +75,8 @@ class AnswerContainer extends React.Component {
     return (
       <div>
         {answers}
-        {disable && <button data-testid="btn-next" onClick={this.next} type="button">Proxima</button>}
+        {disable
+         && <button data-testid="btn-next" onClick={this.next} type="button">Proxima</button>}
       </div>
 
     );
