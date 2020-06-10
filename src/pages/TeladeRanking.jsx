@@ -70,4 +70,3 @@ class TeladeRanking extends React.Component {
 }
 
 export default TeladeRanking;
-
