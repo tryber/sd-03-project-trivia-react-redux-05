@@ -65,6 +65,7 @@ GamePage.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  resetScore: PropTypes.func.isRequired,
 };
 
 
