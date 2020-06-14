@@ -70,4 +70,5 @@ function mapProp(state) {
   };
 }
 
+
 export default connect(mapProp)(FeedBack);

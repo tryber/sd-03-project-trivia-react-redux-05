@@ -3,6 +3,7 @@ const ADD_POINTS = 'ADD_POINTS';
 const CHOOSE_ANSWER = 'CHOOSE_ANSWER';
 const SET_TIMER = 'SET_TIMER';
 const PLAYER_INFORMATION = 'PLAYER_INFORMATION';
+const RESET_SCORE = 'RESET_SCORE';
 
 const initialState = {
   questions: [
@@ -120,6 +121,9 @@ function reducer(state = initialState, action) {
         player:
         { ...state.player, name: action.playerName, gravatarEmail: action.playerEmail },
       };
+
+    case RESET_SCORE:
+      return { ...state, player: { ...state.player, score: 0 } };
 
     default:
       return state;

@@ -21,6 +21,10 @@ class GamePage extends Component {
     this.nextQuestion = this.nextQuestion.bind(this);
   }
 
+  componentDidMount() {
+    this.props.resetScore();
+  }
+
   nextQuestion() {
     const { questionNumber } = this.state;
     const { history } = this.props;
@@ -64,10 +68,12 @@ GamePage.propTypes = {
 };
 
 
+const dispatch = { resetScore: () => ({ type: 'RESET_SCORE' }) };
+
 function mapProps({ questions }) {
   return {
     questions,
   };
 }
 
-export default connect(mapProps)(GamePage);
+export default connect(mapProps, dispatch)(GamePage);
