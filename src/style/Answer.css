@@ -1,0 +1,6 @@
+.answer {
+  border: thin solid black;
+  cursor: pointer;
+  padding: 5px 10px;
+  width: fit-content;
+}
