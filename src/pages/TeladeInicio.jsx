@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import logo from '../trivia.png';
+import { Link } from 'react-router-dom';
 
 export class TeladeInicio extends Component {
   constructor(props) {
@@ -73,7 +74,11 @@ export class TeladeInicio extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           {this.inputForms()}
           <p>SUA VEZ</p>
-          {this.config()}
+          <div>
+            <Link to='/Settings'>
+              <button data-testid="btn-settings">Configurações</button>
+            </Link>
+          </div>
         </header>
       </div>
     );
@@ -87,9 +92,9 @@ TeladeInicio.propTypes = {
   playerInformation: PropTypes.func.isRequired,
 };
 
-const mapDispatchtoProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
   playerInformation: (playerEmail, playerName) =>
     dispatch({ type: 'PLAYER_INFORMATION', playerEmail, playerName }),
 });
 
-export default connect(null, mapDispatchtoProps)(TeladeInicio);
+export default connect(null, mapDispatchToProps)(TeladeInicio);
